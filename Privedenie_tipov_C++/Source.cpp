@@ -35,10 +35,10 @@ public:
 
 class IVehicle
 {
-public:    //в абстрактном классе мы не создаем конструктор, нужно чтобы был по умолчанию
+public:    //РІ Р°Р±СЃС‚СЂР°РєС‚РЅРѕРј РєР»Р°СЃСЃРµ РјС‹ РЅРµ СЃРѕР·РґР°РµРј РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РЅСѓР¶РЅРѕ С‡С‚РѕР±С‹ Р±С‹Р» РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	virtual void showType()  = 0;
 	virtual void showMaxSpeed()  = 0;
-	virtual ~IVehicle() { // здесь создаем виртуальный деструктор, чтобы не было утечки памяти
+	virtual ~IVehicle() { // Р·РґРµСЃСЊ СЃРѕР·РґР°РµРј РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ СѓС‚РµС‡РєРё РїР°РјСЏС‚Рё
 		
 	}
 
@@ -52,7 +52,7 @@ public:
 		
 	}
 
-	void showType() override{ // создаем override для перегрузки функции ( переопределения ) 
+	void showType() override{ // СЃРѕР·РґР°РµРј override РґР»СЏ РїРµСЂРµРіСЂСѓР·РєРё С„СѓРЅРєС†РёРё ( РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёСЏ ) 
 		std::cout << "This is Tram" << std::endl;
 	}
 	void showMaxSpeed() override {
@@ -86,12 +86,12 @@ private:
 };
 
 
-void infoIVehicle(const std::vector<IVehicle*>& vehicles) { // мы передаем по ссылке для экономии памяти ( 8 байт вместо копирования вектора ) 
+void infoIVehicle(const std::vector<IVehicle*>& vehicles) { // РјС‹ РїРµСЂРµРґР°РµРј РїРѕ СЃСЃС‹Р»РєРµ РґР»СЏ СЌРєРѕРЅРѕРјРёРё РїР°РјСЏС‚Рё ( 8 Р±Р°Р№С‚ РІРјРµСЃС‚Рѕ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РІРµРєС‚РѕСЂР° ) 
 
 	for (size_t i = 0; i < vehicles.size(); i++) {
 		vehicles[i]->showType();
 		vehicles[i]->showMaxSpeed();
-		std::cout << sizeof(vehicles); // функция для определения размера, в данном случае ссылки на вектор vehicles
+		std::cout << sizeof(vehicles); // С„СѓРЅРєС†РёСЏ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЂР°Р·РјРµСЂР°, РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ СЃСЃС‹Р»РєРё РЅР° РІРµРєС‚РѕСЂ vehicles
 
 	}
 }
@@ -106,12 +106,12 @@ void foo(Parent deried_obj) {
 int main() {
 	setlocale(LC_ALL, "Russian");
 
-	IVehicle* a = new Tram("Street", 50); // создаем интерфейс 
-	IVehicle* b = new Electrobus("Street", 100); // используем указатель на класс, так как наследуемый класс принимает родительский + свои методы
+	IVehicle* a = new Tram("Street", 50); // СЃРѕР·РґР°РµРј РёРЅС‚РµСЂС„РµР№СЃ 
+	IVehicle* b = new Electrobus("Street", 100); // РёСЃРїРѕР»СЊР·СѓРµРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РєР»Р°СЃСЃ, С‚Р°Рє РєР°Рє РЅР°СЃР»РµРґСѓРµРјС‹Р№ РєР»Р°СЃСЃ РїСЂРёРЅРёРјР°РµС‚ СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ + СЃРІРѕРё РјРµС‚РѕРґС‹
 
 
-	std::vector<IVehicle*> vehicles; // создаем вектор 
-	vehicles.push_back(a); // пушим в вектор
+	std::vector<IVehicle*> vehicles; // СЃРѕР·РґР°РµРј РІРµРєС‚РѕСЂ 
+	vehicles.push_back(a); // РїСѓС€РёРј РІ РІРµРєС‚РѕСЂ
 	vehicles.push_back(b);
 	
 
@@ -126,7 +126,7 @@ int main() {
 	delete b;
 
 
-	std::cout << "\n\n\nТема занятия:\nПереопределение типов \n\n\n\n" << std::endl;
+	std::cout << "\n\n\nРўРµРјР° Р·Р°РЅСЏС‚РёСЏ:\nРџРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ С‚РёРїРѕРІ \n\n\n\n" << std::endl;
 
 
 
@@ -134,17 +134,17 @@ int main() {
 	Child child;
 
 	//int a = 5;
-	//double b = (double)a; // С style приведение типов
+	//double b = (double)a; // РЎ style РїСЂРёРІРµРґРµРЅРёРµ С‚РёРїРѕРІ
 	//double b1 = double(a); // 
 
 
 
 
-	//upcast - неявное преобразование разрешено
-	Parent* pParent = &child; // мы child превращаем в родителя ( patrnt ). Методы child пропадут и останутся только методы parent
+	//upcast - РЅРµСЏРІРЅРѕРµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЂР°Р·СЂРµС€РµРЅРѕ
+	Parent* pParent = &child; // РјС‹ child РїСЂРµРІСЂР°С‰Р°РµРј РІ СЂРѕРґРёС‚РµР»СЏ ( patrnt ). РњРµС‚РѕРґС‹ child РїСЂРѕРїР°РґСѓС‚ Рё РѕСЃС‚Р°РЅСѓС‚СЃСЏ С‚РѕР»СЊРєРѕ РјРµС‚РѕРґС‹ parent
 
-	//downcast - требуется явное преобразование типа
-	Child* pChild = (Child*)&parent; // (мы parent превращаем в child)   -   (Child*)parent*
+	//downcast - С‚СЂРµР±СѓРµС‚СЃСЏ СЏРІРЅРѕРµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ С‚РёРїР°
+	Child* pChild = (Child*)&parent; // (РјС‹ parent РїСЂРµРІСЂР°С‰Р°РµРј РІ child)   -   (Child*)parent*
 	
 	pParent->Sleep();
 	pChild->Sleep();
